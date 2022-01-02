@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/voxel_hammer/VoxelTerrainChunk.gd" type="Script" id=2]
+
+[sub_resource type="SphereShape" id=1]
+radius = 10.0
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 82.509, 101.939, 224.881 )
+far = 1000.0
+
+[node name="RigidBody" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 65.0396, 187.279, 69.9099 )
+
+[node name="CSGSphere" type="CSGSphere" parent="RigidBody"]
+radius = 10.0
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
+shape = SubResource( 1 )
+
+[node name="VoxelTerrainChunk" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 57.1502, 13.3338, 64.0459 )
+script = ExtResource( 2 )
+do_test_fill = true

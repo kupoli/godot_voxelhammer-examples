@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/voxel_hammer/tests/benchmark.gd" type="Script" id=1]
+[ext_resource path="res://addons/voxel_hammer/tests/benchmark_voxel_configuration.tres" type="Resource" id=2]
+
+[node name="Benchmark" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -500 )
+script = ExtResource( 1 )
+vox_configuration = ExtResource( 2 )

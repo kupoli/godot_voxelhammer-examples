@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://addons/voxel_hammer/VoxelTerrain.gd" type="Script" id=1]
+[ext_resource path="res://addons/voxel_hammer/PaintOpPlane.gd" type="Script" id=2]
+[ext_resource path="res://addons/voxel_hammer/VoxelPaintStack.gd" type="Script" id=4]
+[ext_resource path="res://addons/voxel_hammer/PaintOpSimplexNoise.gd" type="Script" id=5]
+[ext_resource path="res://default_env.tres" type="Environment" id=6]
+[ext_resource path="res://addons/voxel_hammer/default_voxel_configuration.tres" type="Resource" id=7]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 5 )
+paint_mode = 0
+blend_mode = 0
+blend_amount = 1.0
+material = 2
+smooth = true
+active = true
+lucanarity = 2.0
+octaves = 3
+period = 64.0
+persistence = 0.5
+rseed = 0
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 2 )
+paint_mode = 0
+blend_mode = 0
+blend_amount = 1.0
+material = 1
+smooth = true
+active = true
+low = 0
+high = 1
+plane = 1
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 4 )
+operation_stack = [ SubResource( 1 ), SubResource( 6 ) ]
+
+[sub_resource type="SphereShape" id=5]
+radius = 10.0
+
+[node name="Spatial" type="Spatial"]
+
+[node name="VoxelTerrain" type="Spatial" parent="."]
+script = ExtResource( 1 )
+configuration = ExtResource( 7 )
+paint_stack = SubResource( 4 )
+lod_distance_max = 64.0
+auto_expand = true
+max_chunk_count = 256
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.80071, 0.599052, 0, -0.599052, 0.80071, -27.8165, 0.49823, 296.701 )
+environment = ExtResource( 6 )
+current = true
+fov = 93.2202
+far = 1000.0
+
+[node name="RigidBody" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 68.3266, 187.279, 25.8981 )
+
+[node name="CSGSphere" type="CSGSphere" parent="RigidBody"]
+radius = 10.0
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
+shape = SubResource( 5 )
