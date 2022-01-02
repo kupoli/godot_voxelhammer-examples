@@ -1,0 +1,9 @@
+[submodule "addons/godot_voxelhammer"]
+	path = addons/godot_voxelhammer
+	url = git@github.com:kupoli/godot_voxelhammer.git
+[submodule "addons/godot_task_server"]
+	path = addons/godot_task_server
+	url = git@github.com:kupoli/godot_task_server.git
+[submodule "addons/godot_voxelhammer-native-rust"]
+	path = addons/godot_voxelhammer-native-rust
+	url = git@github.com:kupoli/godot_voxelhammer-native-rust.git
